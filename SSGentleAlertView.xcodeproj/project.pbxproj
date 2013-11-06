@@ -36,6 +36,9 @@
 		0632F1181750952200CE8A0F /* SSDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632F1121750952200CE8A0F /* SSDialogView.m */; };
 		0632F11E1750952200CE8A0F /* SSGentleAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632F1161750952200CE8A0F /* SSGentleAlertView.m */; };
 		C6B9B9D617543D69007F8C5E /* SSOverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B9D517543D69007F8C5E /* SSOverlayWindow.m */; };
+		F14D78FB182A515500CF562F /* SSGentleAlertViewButtonBlackTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14D78F8182A515500CF562F /* SSGentleAlertViewButtonBlackTextView.xib */; };
+		F14D78FC182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F14D78F9182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.bundle */; };
+		F14D78FD182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14D78FA182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		0632F1161750952200CE8A0F /* SSGentleAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSGentleAlertView.m; sourceTree = "<group>"; };
 		C6B9B9D417543D69007F8C5E /* SSOverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSOverlayWindow.h; sourceTree = "<group>"; };
 		C6B9B9D517543D69007F8C5E /* SSOverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSOverlayWindow.m; sourceTree = "<group>"; };
+		F14D78F8182A515500CF562F /* SSGentleAlertViewButtonBlackTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSGentleAlertViewButtonBlackTextView.xib; sourceTree = "<group>"; };
+		F14D78F9182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SSGentleAlertViewStyleBlackTextView.bundle; sourceTree = "<group>"; };
+		F14D78FA182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSGentleAlertViewStyleBlackTextView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,11 +202,22 @@
 				0632F1161750952200CE8A0F /* SSGentleAlertView.m */,
 				C6B9B9D417543D69007F8C5E /* SSOverlayWindow.h */,
 				C6B9B9D517543D69007F8C5E /* SSOverlayWindow.m */,
+				F14D78F7182A515500CF562F /* SSGentleAlertViewBlackTextView */,
 				062F70B5175197CC00EE9F53 /* SSGentleAlertViewDefault */,
 				062F70C91751B5C700EE9F53 /* SSGentleAlertViewBlack */,
 				062F70BA175197CC00EE9F53 /* SSGentleAlertViewNative */,
 			);
 			path = SSGentleAlertView;
+			sourceTree = "<group>";
+		};
+		F14D78F7182A515500CF562F /* SSGentleAlertViewBlackTextView */ = {
+			isa = PBXGroup;
+			children = (
+				F14D78F8182A515500CF562F /* SSGentleAlertViewButtonBlackTextView.xib */,
+				F14D78F9182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.bundle */,
+				F14D78FA182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.xib */,
+			);
+			path = SSGentleAlertViewBlackTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +277,10 @@
 				0632F10B175083FD00CE8A0F /* InfoPlist.strings in Resources */,
 				0632F10C175083FD00CE8A0F /* MainStoryboard.storyboard in Resources */,
 				062F70BF175197CC00EE9F53 /* SSGentleAlertButtonDefault.xib in Resources */,
+				F14D78FD182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.xib in Resources */,
 				062F70C0175197CC00EE9F53 /* SSGentleAlertViewDefault.bundle in Resources */,
 				062F70C1175197CC00EE9F53 /* SSGentleAlertViewDefault.xib in Resources */,
+				F14D78FC182A515500CF562F /* SSGentleAlertViewStyleBlackTextView.bundle in Resources */,
 				062F70C2175197CC00EE9F53 /* SSGentleAlertButtonNative.xib in Resources */,
 				062F70C3175197CC00EE9F53 /* SSGentleAlertViewNative.bundle in Resources */,
 				062F70C4175197CC00EE9F53 /* SSGentleAlertViewNative.xib in Resources */,
@@ -271,6 +290,7 @@
 				062F70D61751FA7D00EE9F53 /* dialog_bg.png in Resources */,
 				062F70D71751FA7D00EE9F53 /* dialog_bg@2x.png in Resources */,
 				062F70D81751FA7D00EE9F53 /* dialog_btn_normal.png in Resources */,
+				F14D78FB182A515500CF562F /* SSGentleAlertViewButtonBlackTextView.xib in Resources */,
 				062F70D91751FA7D00EE9F53 /* dialog_btn_normal@2x.png in Resources */,
 				062F70DA1751FA7D00EE9F53 /* dialog_btn_pressed.png in Resources */,
 				062F70DC1752022C00EE9F53 /* dialog_btn_pressed@2x.png in Resources */,

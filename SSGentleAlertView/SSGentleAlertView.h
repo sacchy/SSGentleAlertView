@@ -11,6 +11,7 @@
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, copy) NSString* title;
 @property (nonatomic, copy) NSString* message;
+@property (nonatomic, copy) NSString* viewMessage;
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
 @property (nonatomic) NSInteger cancelButtonIndex;
 @property (nonatomic, readonly) NSInteger numberOfButtons;
@@ -20,6 +21,7 @@
 - (id)initWithStyle:(SSGentleAlertViewStyle)style;
 - (id)initWithTitle:(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSString*)otherButtonTitles, ...;
 - (id)initWithStyle:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSString*)otherButtonTitles, ...;
+- (id)initWithStyleTextView:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message viewMessage:(NSString*)viewMessage delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSString*)otherButtonTitles, ...;
 
 - (void)show;
 - (NSInteger)addButtonWithTitle:(NSString*)title;
@@ -32,6 +34,7 @@
 - (UIImageView*)dialogImageView;
 - (UILabel*)titleLabel;
 - (UILabel*)messageLabel;
+- (UITextView*)textMessageView;
 - (UIButton*)buttonBase;
 - (UIButton*)defaultButtonBase;
 - (void)setButtonBase:(UIButton*)buttonBase;

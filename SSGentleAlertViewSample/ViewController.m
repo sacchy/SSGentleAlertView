@@ -43,12 +43,27 @@
                            otherButtonTitles:@"OK", nil];
                            */
   SSGentleAlertView* alert;
-  alert = [[SSGentleAlertView alloc] initWithStyle:self.style
-                                             title:@"Hello, SSGentleAlertView!"
-                                           message:nil
-                                          delegate:self
-                                 cancelButtonTitle:nil
-                                 otherButtonTitles:@"OK", nil];
+    
+  if (self.style == SSGentleAlertViewStyleBlackTextView) {
+      // TODO message
+      alert = [[SSGentleAlertView alloc] initWithStyleTextView:self.style
+                                                         title:@"Hello, TextView!"
+                                                       message:nil
+                                                   viewMessage:@"viewMessage!"
+                                                      delegate:self
+                                             cancelButtonTitle:nil
+                                             otherButtonTitles:@"OK", nil];
+  }
+  else
+  {
+      alert = [[SSGentleAlertView alloc] initWithStyle:self.style
+                                                 title:@"Hello, SSGentleAlertView!"
+                                               message:nil
+                                              delegate:self
+                                     cancelButtonTitle:nil
+                                     otherButtonTitles:@"OK", nil];
+  }
+    
   if (self.isOriginal) {
     [self.class setAppearanceToGentleAlertView:alert];
     alert.disappearWhenBackgroundClicked = YES;
@@ -58,11 +73,14 @@
 
 - (IBAction)button2DidPush:(id)sender
 {
+  // TODO message
+    
   //UIAlertView* alert = [UIAlertView new];
   SSGentleAlertView* alert = [[SSGentleAlertView alloc] initWithStyle:self.style];
   alert.delegate = self;
   alert.title = @"SSGentleAlertView";
-  alert.message = @"This is GentleAlertView!\nUIAlertView is too strong to use for ordinary messages.";
+//  alert.message = @"This is GentleAlertView!\nUIAlertView is too strong to use for ordinary messages.";
+  alert.viewMessage = @"viewMessage";
   alert.cancelButtonIndex = 0;
   [alert addButtonWithTitle:@"Cancel"];
   [alert addButtonWithTitle:@"OK"];
@@ -75,6 +93,8 @@
 
 - (IBAction)button3DidPush:(id)sender
 {
+  // TODO message
+
   //UIAlertView* alert = [UIAlertView new];
   SSGentleAlertView* alert = [[SSGentleAlertView alloc] initWithStyle:self.style];
   alert.delegate = self;
@@ -110,6 +130,9 @@
       self.original = YES;
       [self updateStyle:SSGentleAlertViewStyleDefault];
       break;
+    case 4:
+      [self updateStyle:SSGentleAlertViewStyleBlackTextView];
+      break;
     default:
       [self updateStyle:SSGentleAlertViewStyleDefault];
       break;
@@ -125,6 +148,7 @@
       self.segmentedControl.tintColor = nil;
       break;
     case SSGentleAlertViewStyleBlack:
+    case SSGentleAlertViewStyleBlackTextView:
       self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
       self.navigationController.toolbar.barStyle = UIBarStyleBlack;
       self.segmentedControl.tintColor = UIColor.blackColor;

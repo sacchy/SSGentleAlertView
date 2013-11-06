@@ -14,6 +14,7 @@
 @property (weak) IBOutlet SSDialogView* dialogView;
 @property (weak) IBOutlet UILabel* titleLabel;
 @property (weak) IBOutlet UILabel* messageLabel;
+@property (weak) IBOutlet UITextView* textMessageView;
 @property (strong) NSMutableArray* buttonCaptions;
 @property (assign) CGAffineTransform backupDialogTransform;
 @property (nonatomic) SSGentleAlertViewStyle style;
@@ -42,7 +43,14 @@
     self.buttonCaptions = [NSMutableArray array];
     self.titleLabel.hidden = YES;
     self.messageLabel.hidden = YES;
+    self.textMessageView.hidden = YES;
     self.hidden = YES;
+      
+    self.textMessageView.font = [UIFont fontWithName:@"Lato-Bold" size:11];
+    self.textMessageView.editable = NO;
+    self.textMessageView.layer.borderWidth = 1.0f;
+    self.textMessageView.layer.cornerRadius = 6.0f;
+    self.textMessageView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
   }
   return self;
 }
@@ -59,13 +67,14 @@
 
 - (id)initWithStyle:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSString*)otherButtonTitles, ...
 {
-  va_list args;
-  va_start(args, otherButtonTitles);
-  if ((self = [self initWithStyle:style title:title message:message delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitles args:args])) {
-  }
-  va_end(args);
-  return self;
+    va_list args;
+    va_start(args, otherButtonTitles);
+    if ((self = [self initWithStyle:style title:title message:message delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitles args:args])) {
+    }
+    va_end(args);
+    return self;
 }
+
 
 - (id)initWithStyle:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitle:(NSString*)otherButtonTitle args:(va_list)args
 {
@@ -85,6 +94,38 @@
     }
   }
   return self;
+}
+
+- (id)initWithStyleTextView:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message viewMessage:(NSString*)viewMessage delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSString*)otherButtonTitles, ...
+{
+    va_list args;
+    va_start(args, otherButtonTitles);
+    
+    if ((self = [self initWithStyle:style title:title message:message viewMessage:viewMessage delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitles args:args])) {
+    }
+    va_end(args);
+    return self;
+}
+
+- (id)initWithStyle:(SSGentleAlertViewStyle)style title:(NSString*)title message:(NSString*)message viewMessage:(NSString*)viewMessage delegate:(id)delegate cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitle:(NSString*)otherButtonTitle args:(va_list)args
+{
+    if ((self = [self initWithStyle:style])) {
+        self.title = title;
+        self.message = message;
+        self.viewMessage = viewMessage;
+        self.delegate = delegate;
+        if (nil != cancelButtonTitle) {
+            self.cancelButtonIndex = 0;
+            [self addButtonWithTitle:cancelButtonTitle];
+        }
+        
+        NSString* title = otherButtonTitle;
+        while (title) {
+            [self addButtonWithTitle:title];
+            title = va_arg(args, typeof(NSString*));
+        }
+    }
+    return self;
 }
 
 + (UIView*)gentleAlertViewFromNibForStyle:(SSGentleAlertViewStyle)style
@@ -119,6 +160,17 @@
 {
   self.messageLabel.hidden = !message;
   self.messageLabel.text = message;
+}
+
+- (NSString*)viewMessage
+{
+    return self.textMessageView.text;
+}
+
+- (void)setViewMessage:(NSString*)viewMessage
+{
+    self.textMessageView.hidden = !viewMessage;
+    self.textMessageView.text = viewMessage;
 }
 
 - (BOOL)isVisible
@@ -292,6 +344,7 @@
   switch (style) {
     case SSGentleAlertViewStyleNative: return @"SSGentleAlertViewNative";
     case SSGentleAlertViewStyleBlack: return @"SSGentleAlertViewBlack";
+    case SSGentleAlertViewStyleBlackTextView: return @"SSGentleAlertViewStyleBlackTextView";
     default: return @"SSGentleAlertViewDefault";
   }
 }

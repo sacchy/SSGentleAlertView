@@ -9,6 +9,7 @@
 @interface SSDialogView ()
 @property (weak) IBOutlet UILabel* titleLabel;
 @property (weak) IBOutlet UILabel* messageLabel;
+@property (weak) IBOutlet UITextView* textMessageView;
 @property (weak) IBOutlet UIImageView* dialogImageView;
 @property (weak) IBOutlet UIView* buttonContainerView;
 @property (assign) CGFloat defaultTitleLabelHeight;
@@ -30,6 +31,7 @@
 {
   self.titleLabel.text = nil;
   self.messageLabel.text = nil;
+  self.textMessageView.text = nil;
 
   self.defaultTitleLabelHeight = self.titleLabel.bounds.size.height;
   self.defaultMessageLabelHeight = self.messageLabel.bounds.size.height;
@@ -303,6 +305,7 @@
   switch (style) {
     case SSGentleAlertViewStyleNative: return @"SSGentleAlertViewNative";
     case SSGentleAlertViewStyleBlack: return @"SSGentleAlertViewBlack";
+    case SSGentleAlertViewStyleBlackTextView: return @"SSGentleAlertViewStyleBlackTextView";
     default: return @"SSGentleAlertViewDefault";
   }
 }
@@ -312,6 +315,7 @@
   switch (style) {
     case SSGentleAlertViewStyleNative: return @"SSGentleAlertButtonNative";
     case SSGentleAlertViewStyleBlack: return @"SSGentleAlertButtonBlack";
+    case SSGentleAlertViewStyleBlackTextView: return @"SSGentleAlertViewButtonBlackTextView";
     default: return @"SSGentleAlertButtonDefault";
   }
 }
